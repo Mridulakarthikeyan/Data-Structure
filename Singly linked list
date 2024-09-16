@@ -2,7 +2,7 @@
 #include<stdlib.h>
 struct node
 {
-    struct node*prev;
+   
     int data;
     struct node*next;
 };
@@ -20,15 +20,13 @@ void insertatfront(int data)
         new->data=data;
         if(head==NULL)
         {
-            new->prev=NULL;
+            
             new->next=NULL;
             head=new;
         }
         else
         {
             new->next=head;
-            head->prev=new;
-            new->prev=NULL;
             head=new;
         }
     }
@@ -47,7 +45,6 @@ void insertatend(int data)
         new->data=data;
         if(head==NULL)
         {
-            new->prev=NULL;
             new->next=NULL;
             head=new;
         }
@@ -59,7 +56,6 @@ void insertatend(int data)
                 temp=temp->next;
             }
             temp->next=new;
-            new->prev=temp;
             new->next=NULL;
         }
     }
@@ -85,9 +81,7 @@ void insertatmiddle(int data)
             temp=temp->next;
         }
         new->next=temp->next;
-        temp->next->prev=new;
         temp->next=new;
-        new->prev=temp;
     }
 }
 struct node*head, *temp;
@@ -101,7 +95,6 @@ void deleteatfront()
     {
         temp=head;
         head=head->next;
-        head->prev=NULL;
         free(temp);
     }
 }
@@ -120,7 +113,6 @@ void deleteatend()
             prev=temp;
             temp=temp->next;
         }
-        prev->next=NULL;
         free(temp);
     }
 }
@@ -143,7 +135,6 @@ void deleteatmiddle()
             temp=temp->next;
         }
         prev->next=temp->next;
-        temp->next->prev=prev;
         free(temp);
     }
 }
