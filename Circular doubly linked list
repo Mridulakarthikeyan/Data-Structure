@@ -1,0 +1,205 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    struct node*prev;
+    int data;
+    struct node*next;
+};
+struct node*link;
+void insertatfront(int data)
+{
+    struct node*new;
+    new=(struct node*)malloc(sizeof(struct node));
+    if(new==NULL)
+    {
+        printf("no memory");
+    }
+    else
+    {
+        new->data=data;
+        if(head==NULL)
+        {
+            new->prev=NULL;
+            new->next=NULL;
+            link=new;
+        }
+        else
+        {
+            new->next=link;
+            link->prev=new;
+            new->prev=NULL;
+            link=new;
+        }
+    }
+}
+struct node*link, *temp;
+void insertatend(int data) 
+{
+    struct node*new;
+    new=(struct node*)malloc(sizeof(struct node));
+    if(new==NULL)
+    {
+        printf("no memory");
+    }
+    else
+    {
+        new->data=data;
+        if(link==NULL)
+        {
+            new->prev=NULL;
+            new->next=NULL;
+            link=new;
+        }
+        else
+        {
+            temp=link;
+            while(temp->next!=NULL)
+            {
+                temp=temp->next;
+            }
+            temp->next=new;
+            new->prev=temp;
+            new->next=NULL;
+        }
+    }
+}
+struct node*link, *temp;
+void insertatmiddle(int data)
+{
+    struct node*new;
+    new=(struct node*)malloc(sizeof(struct node));
+    if(new==NULL)
+    {
+        printf("no memory");
+    }
+    else
+    {
+        int pos, i;
+        printf("enter the pos:");
+        scanf("%d", &pos);
+        new->data=data;
+        temp=link;
+        for(i=1;i<pos-1;i++)
+        {
+            temp=temp->next;
+        }
+        new->next=temp->next;
+        temp->next->prev=new;
+        temp->next=new;
+        new->prev=temp;
+    }
+}
+struct node*link, *temp;
+void deleteatfront()
+{
+    if(head==NULL)
+    {
+        printf("list is empty");
+    }
+    else
+    {
+        temp=link;
+        link=link->next;
+        link->prev=NULL;
+        free(temp);
+    }
+}
+struct node*link, *temp, *prev;
+void deleteatend() 
+{
+    if(head==NULL)
+    {
+        printf("list is empty");
+    }
+    else
+    {
+        temp=link;
+        while(temp->next!=NULL)
+        {
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=NULL;
+        free(temp);
+    }
+}
+struct node*link, *temp, *prev;
+void deleteatmiddle() 
+{
+    if(link==NULL)
+    {
+        printf("list is empty");
+    }
+    else
+    {
+        int pos, i;
+        printf("enter the position:");
+        scanf("%d", &pos);
+        temp=head;
+        for(i=1;i<pos;i++)
+        {
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=temp->next;
+        temp->next->prev=prev;
+        free(temp);
+    }
+}
+struct node*link, *temp;
+void search() 
+{
+    int key, c=0;
+    printf("enter the num to search:");
+    scanf("%d", &key);
+    temp=head;
+    while(temp!=NULL) 
+    {
+    if(temp->data==key) 
+    {
+        c=1;
+        break;
+    }
+    temp=temp->next;
+  }
+    if(c==1)
+    {
+        printf("found");
+    }
+    else
+    {
+        printf("not found");
+    }
+}   
+void display()
+{
+    temp=link;
+    while(temp!=NULL) 
+    {
+        printf("%d\t",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+}
+
+void main() 
+{
+    insertatfront(1);
+    insertatfront(2);
+    insertatfront(3);
+    display();
+    insertatend(4);
+    insertatend(8);
+    display();
+    insertatmiddle(7);
+    display();
+    deleteatfront();
+    display();
+    deleteatend();
+    display();
+    deleteatmiddle();
+    display();
+    search();
+    
+}
