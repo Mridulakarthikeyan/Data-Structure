@@ -1,0 +1,24 @@
+#include <stdio.h>
+ int main() 
+{
+int myArray[]={1, 2, 3, 4, 5, 0, 0);
+int maxLength = sizeof(myArray) / sizeof(myArray[0]);
+int usedLength = 5;
+if (usedLength < maxLength) 
+{
+for (int i usedLength; i > 0; i--)
+{
+myArray[i] = myArray[i-1];
+}
+myArray[0] = 6;
+usedLength usedLength 1;
+} 
+else
+{
+printf("array is full")
+}
+printf("Updated Array: ");
+for (int i=0; i usedlength; i++) {
+printf("d", myArray[i]);
+return 0;
+}
