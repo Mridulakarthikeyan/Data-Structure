@@ -4,34 +4,36 @@ int main() {
 
 int myArray[]={1, 2, 3, 4, 5, 0, 0);
 
-int usedElements = 5;
+int maxLength = sizeof(myArray) / sizeof(myArray[0]);
 
-if (usedElements > 0) {
+int usedLength = 5;
 
-for (int i = 1; i < usedElements; i++) {
+if (usedLength < maxLength) {
 
-myArray[i-1] = myArray[i];
+for (int i usedLength; i > 0; i--) {
+
+myArray[i] = myArray[i-1];
 
 }
 
-myArray [usedElements 1] = 0;
+myArray[0] = 6;
 
-usedElements--;
+usedLength usedLength 1;
 
-printf("Element at the end has been deleted.\n");
+} else {
+
+printf("array is full")
+
+}
 
 printf("Updated Array: ");
 
-for (int i=0; i < usedElements; i++) {
+for (int i = 0; i < usedLength; i++) {
 
-printf("%d, ", myArray[i]);
+printf("%d", myArray[i]);
 
 }
-printf("\n");
-} 
-else 
-{
-printf("Array is already empty.\n");
-}
+
 return 0;
+
 }
