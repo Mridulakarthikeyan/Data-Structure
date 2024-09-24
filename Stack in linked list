@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+}*front = NULL;
+
+void push(int value) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    if (front == NULL) {
+        newNode->next = NULL;
+        front = newNode;
+    } else {
+        struct Node *temp = front;
+        while(temp ->next != NULL)
+        {
+            temp = temp ->next;
+        }
+        temp ->next = newNode;
+    }
+    
+}
+void pop()
+{
+     if (front == NULL) {
+        printf("list is full");
+    } else {
+        struct Node *temp = front;
+        front = front->next;
+        free(temp);
+    }
+    
+}
+
+void display() {
+    if (front == NULL) {
+        printf("\nList is empty\n");
+    } else {
+        struct Node *temp = front;
+        printf("\nList elements are:\n");
+        while (temp != NULL) {
+            printf("%d ---> ", temp->data);
+            temp = temp->next;
+        }
+        printf("NULL\n");
+    }
+}
+
+int main()
+{
+    push(5);
+    push(10);
+    pop();
+    display();
+    return 0;
+}
+    
+    
