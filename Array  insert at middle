@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+
+int myArray[]={1, 2, 3, 4, 5, 0, 0};
+
+int maxlength = sizeof(myArray) / sizeof(myArray[0]);
+
+int usedLength = 5;
+
+int insertIndex = 3;
+
+int newValue = 7;
+
+if (usedLength < maxLength) {
+
+for (int i= usedLength; i > insertIndex; i--) {
+
+myArray[i] = myArray[i-1];
+
+}
+
+myArray[insertIndex] newValue;
+
+usedLength++;
+
+} else {
+
+printf("Array is full!\n");
+
+}
+
+printf("Updated Array: ");
+
+for (int i = 0; i < usedLength; i++) {
+
+printf("%d ", myArray[i]);
+
+}
+
+return 0;
+}
